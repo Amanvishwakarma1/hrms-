@@ -114,6 +114,30 @@ sequelize.sync({ force: false })
       console.warn('PostgreSQL table migration warning:', migErr.message);
     }
 
+    // Schema migration: Add speed column to location_footprints table if not exists
+    try {
+      await sequelize.query('ALTER TABLE location_footprints ADD COLUMN IF NOT EXISTS speed FLOAT;');
+      console.log('Migrated location_footprints table schema: added speed column.');
+    } catch (migErr) {
+      console.warn('PostgreSQL table migration warning:', migErr.message);
+    }
+
+    // Schema migration: Add heading column to location_footprints table if not exists
+    try {
+      await sequelize.query('ALTER TABLE location_footprints ADD COLUMN IF NOT EXISTS heading FLOAT;');
+      console.log('Migrated location_footprints table schema: added heading column.');
+    } catch (migErr) {
+      console.warn('PostgreSQL table migration warning:', migErr.message);
+    }
+
+    // Schema migration: Add altitude column to location_footprints table if not exists
+    try {
+      await sequelize.query('ALTER TABLE location_footprints ADD COLUMN IF NOT EXISTS altitude FLOAT;');
+      console.log('Migrated location_footprints table schema: added altitude column.');
+    } catch (migErr) {
+      console.warn('PostgreSQL table migration warning:', migErr.message);
+    }
+
     // Schema migration: Add name column to location_geofence_settings table if not exists
     try {
       await sequelize.query('ALTER TABLE location_geofence_settings ADD COLUMN IF NOT EXISTS name VARCHAR(255) DEFAULT \'Office Geofence\';');
