@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
@@ -57,7 +58,13 @@ if (!fs.existsSync(uploadDir)){
     fs.mkdirSync(uploadDir);
 }
 
-app.use('/static/uploads', express.static(uploadDir));
+app.use('/static/uploads', express.static(uploadDir, {
+    setHeaders: (res) => {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+        res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    }
+}));
 app.use('/api/expenses', expenseRoutes);
 app.use('/api/attendance', attendanceRoutes);
 app.use('/api/footprints', footprintRoutes);
@@ -103,6 +110,14 @@ sequelize.sync({ force: false })
     try {
       await sequelize.query('ALTER TABLE location_footprints ADD COLUMN IF NOT EXISTS address TEXT;');
       console.log('Migrated location_footprints table schema: added address column.');
+    } catch (migErr) {
+      console.warn('PostgreSQL table migration warning:', migErr.message);
+    }
+
+    // Schema migration: Add name column to location_geofence_settings table if not exists
+    try {
+      await sequelize.query('ALTER TABLE location_geofence_settings ADD COLUMN IF NOT EXISTS name VARCHAR(255) DEFAULT \'Office Geofence\';');
+      console.log('Migrated location_geofence_settings table schema: added name column.');
     } catch (migErr) {
       console.warn('PostgreSQL table migration warning:', migErr.message);
     }

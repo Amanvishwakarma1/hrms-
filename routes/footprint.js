@@ -20,6 +20,50 @@ router.get('/', async (req, res) => {
   }
 });
 
+// GET /live : Returns the latest footprint for EACH user today
+router.get('/live', async (req, res) => {
+  try {
+    // Basic implementation: get all footprints from today and group by userId in memory
+    const today = new Date().toISOString().split('T')[0];
+    const footprints = await Footprint.findAll({
+      where: { date: today, latitude: { [Op.ne]: null }, longitude: { [Op.ne]: null } },
+      order: [['timestamp', 'DESC']]
+    });
+    
+    const latestPerUser = {};
+    for (const f of footprints) {
+      if (!latestPerUser[f.userId]) {
+        latestPerUser[f.userId] = f;
+      }
+    }
+    
+    return res.status(200).json(Object.values(latestPerUser));
+  } catch (error) {
+    console.error('Error fetching live footprints:', error);
+    return res.status(500).json({ error: error.message });
+  }
+});
+
+// GET /history : Returns all footprints for a user on a specific date
+router.get('/history', async (req, res) => {
+  try {
+    const { userId, date } = req.query;
+    if (!userId || !date) {
+      return res.status(400).json({ error: 'userId and date are required' });
+    }
+    
+    const footprints = await Footprint.findAll({
+      where: { userId, date, latitude: { [Op.ne]: null }, longitude: { [Op.ne]: null } },
+      order: [['timestamp', 'ASC']]
+    });
+    
+    return res.status(200).json(footprints);
+  } catch (error) {
+    console.error('Error fetching footprint history:', error);
+    return res.status(500).json({ error: error.message });
+  }
+});
+
 router.post('/', async (req, res) => {
   try {
     const { 

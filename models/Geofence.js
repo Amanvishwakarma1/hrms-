@@ -7,6 +7,11 @@ const Geofence = sequelize.define('Geofence', {
     primaryKey: true,
     autoIncrement: true,
   },
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    defaultValue: 'Office Geofence',
+  },
   latitude: {
     type: DataTypes.DOUBLE,
     allowNull: false,

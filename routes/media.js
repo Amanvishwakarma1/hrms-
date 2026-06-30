@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const Media = require('../models/Media');
 const upload = require('../middleware/upload');
+const cloudinary = require('../config/cloudinary');
+const fs = require('fs');
 
 // GET all geotagged media
 router.get('/', async (req, res) => {
@@ -45,8 +47,47 @@ router.post('/', (req, res, next) => {
       date
     } = req.body;
 
-    // Build the static file path accessible by the mobile client
-    const filePath = `/static/uploads/${req.file.filename}`;
+    let filePath = `/static/uploads/${req.file.filename}`;
+
+    const apiSecret = cloudinary.config().api_secret;
+    const uploadPreset = process.env.CLOUDINARY_UPLOAD_PRESET || 'ml_default';
+
+    // Upload to Cloudinary if configured
+    if (apiSecret) {
+      try {
+        console.log('Uploading image to Cloudinary (Signed)...');
+        const result = await cloudinary.uploader.upload(req.file.path, {
+          folder: 'geotagged_media'
+        });
+        filePath = result.secure_url;
+        console.log('Cloudinary upload successful (Signed):', filePath);
+        
+        // Remove local file
+        if (fs.existsSync(req.file.path)) {
+          fs.unlinkSync(req.file.path);
+        }
+      } catch (cloudinaryError) {
+        console.error('Cloudinary Signed upload failed, using local fallback:', cloudinaryError.message);
+      }
+    } else if (uploadPreset) {
+      try {
+        console.log(`Uploading image to Cloudinary (Unsigned with preset: ${uploadPreset})...`);
+        const result = await cloudinary.uploader.unsigned_upload(req.file.path, uploadPreset, {
+          folder: 'geotagged_media'
+        });
+        filePath = result.secure_url;
+        console.log('Cloudinary upload successful (Unsigned):', filePath);
+        
+        // Remove local file
+        if (fs.existsSync(req.file.path)) {
+          fs.unlinkSync(req.file.path);
+        }
+      } catch (cloudinaryError) {
+        console.error('Cloudinary Unsigned upload failed, using local fallback:', cloudinaryError.message);
+      }
+    } else {
+      console.warn('Neither Cloudinary API Secret nor Upload Preset found. Using local file storage.');
+    }
 
     const newMedia = await Media.create({
       userId,

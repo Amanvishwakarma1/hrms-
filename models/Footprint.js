@@ -41,6 +41,18 @@ const Footprint = sequelize.define('Footprint', {
     type: DataTypes.FLOAT,
     allowNull: true,
   },
+  speed: {
+    type: DataTypes.FLOAT,
+    allowNull: true,
+  },
+  heading: {
+    type: DataTypes.FLOAT,
+    allowNull: true,
+  },
+  altitude: {
+    type: DataTypes.FLOAT,
+    allowNull: true,
+  },
   cellId: {
     type: DataTypes.INTEGER,
     field: 'cell_id',
