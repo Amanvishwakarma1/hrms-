@@ -39,6 +39,11 @@ const Media = sequelize.define('Media', {
     type: DataTypes.TEXT,
     allowNull: true,
   },
+  cloudinaryUrl: {
+    type: DataTypes.STRING,
+    field: 'cloudinary_url',
+    allowNull: true,
+  },
   timestamp: {
     type: DataTypes.BIGINT,
     allowNull: false,

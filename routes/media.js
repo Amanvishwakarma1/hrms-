@@ -48,6 +48,7 @@ router.post('/', (req, res, next) => {
     } = req.body;
 
     let filePath = `/static/uploads/${req.file.filename}`;
+    let cloudinaryUrl = null;
 
     const apiSecret = cloudinary.config().api_secret;
     const uploadPreset = process.env.CLOUDINARY_UPLOAD_PRESET || 'ml_default';
@@ -59,13 +60,9 @@ router.post('/', (req, res, next) => {
         const result = await cloudinary.uploader.upload(req.file.path, {
           folder: 'geotagged_media'
         });
-        filePath = result.secure_url;
-        console.log('Cloudinary upload successful (Signed):', filePath);
-        
-        // Remove local file
-        if (fs.existsSync(req.file.path)) {
-          fs.unlinkSync(req.file.path);
-        }
+        cloudinaryUrl = result.secure_url;
+        console.log('Cloudinary upload successful (Signed):', cloudinaryUrl);
+        // Hybrid: We intentionally do NOT unlink the local file here.
       } catch (cloudinaryError) {
         console.error('Cloudinary Signed upload failed, using local fallback:', cloudinaryError.message);
       }
@@ -75,13 +72,9 @@ router.post('/', (req, res, next) => {
         const result = await cloudinary.uploader.unsigned_upload(req.file.path, uploadPreset, {
           folder: 'geotagged_media'
         });
-        filePath = result.secure_url;
-        console.log('Cloudinary upload successful (Unsigned):', filePath);
-        
-        // Remove local file
-        if (fs.existsSync(req.file.path)) {
-          fs.unlinkSync(req.file.path);
-        }
+        cloudinaryUrl = result.secure_url;
+        console.log('Cloudinary upload successful (Unsigned):', cloudinaryUrl);
+        // Hybrid: We intentionally do NOT unlink the local file here.
       } catch (cloudinaryError) {
         console.error('Cloudinary Unsigned upload failed, using local fallback:', cloudinaryError.message);
       }
@@ -93,6 +86,7 @@ router.post('/', (req, res, next) => {
       userId,
       userName,
       filePath,
+      cloudinaryUrl,
       mediaType,
       latitude: latitude ? parseFloat(latitude) : null,
       longitude: longitude ? parseFloat(longitude) : null,
@@ -104,6 +98,22 @@ router.post('/', (req, res, next) => {
     return res.status(201).json(newMedia);
   } catch (error) {
     console.error('Error creating geotagged media:', error);
+    return res.status(500).json({ error: error.message });
+  }
+});
+
+// DELETE a geotagged media by ID
+router.delete('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const mediaItem = await Media.findByPk(id);
+    if (!mediaItem) {
+      return res.status(404).json({ error: 'Media not found' });
+    }
+    await mediaItem.destroy();
+    return res.status(200).json({ message: 'Media deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting media:', error);
     return res.status(500).json({ error: error.message });
   }
 });

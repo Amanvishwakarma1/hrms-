@@ -146,6 +146,14 @@ sequelize.sync({ force: false })
       console.warn('PostgreSQL table migration warning:', migErr.message);
     }
 
+    // Schema migration: Add cloudinary_url column to geotagged_media table if not exists
+    try {
+      await sequelize.query('ALTER TABLE geotagged_media ADD COLUMN IF NOT EXISTS cloudinary_url VARCHAR(255);');
+      console.log('Migrated geotagged_media table schema: added cloudinary_url column.');
+    } catch (migErr) {
+      console.warn('PostgreSQL table migration warning:', migErr.message);
+    }
+
     // Schema migration: Add address column to Attendances table if not exists
     try {
       await sequelize.query('ALTER TABLE "Attendances" ADD COLUMN IF NOT EXISTS address TEXT;');
