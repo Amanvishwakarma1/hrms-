@@ -28,7 +28,7 @@ app.use(cors({
         // Allow requests with no origin (like mobile apps or curl) or any origin in development
         callback(null, true);
     },
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true // Crucial for matching the frontend axios configuration
 }));
@@ -39,7 +39,7 @@ app.use((req, res, next) => {
     if (origin) {
         res.header('Access-Control-Allow-Origin', origin); // Mirrors back the exact frontend origin
     }
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     res.header('Access-Control-Allow-Credentials', 'true'); // Must be explicit
     
