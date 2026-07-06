@@ -47,7 +47,33 @@ exports.createExpenseClaim = async (req, res) => {
     const protocol = forwardedProto || req.protocol;
 
     const serverBaseUrl = `${protocol}://${host}`;
-    const invoiceUrl = `${serverBaseUrl}/static/uploads/${req.file.filename}`;
+    let invoiceUrl = `${serverBaseUrl}/static/uploads/${req.file.filename}`;
+
+    const cloudinary = require('../config/cloudinary');
+    const apiSecret = cloudinary.config().api_secret;
+    const uploadPreset = process.env.CLOUDINARY_UPLOAD_PRESET || 'ml_default';
+
+    if (apiSecret) {
+      try {
+        console.log('Uploading expense invoice to Cloudinary (Signed)...');
+        const result = await cloudinary.uploader.upload(req.file.path, {
+          folder: 'expenses'
+        });
+        invoiceUrl = result.secure_url;
+      } catch (cloudinaryError) {
+        console.error('Cloudinary upload failed:', cloudinaryError.message);
+      }
+    } else if (uploadPreset) {
+      try {
+        console.log(`Uploading expense invoice to Cloudinary (Unsigned)...`);
+        const result = await cloudinary.uploader.unsigned_upload(req.file.path, uploadPreset, {
+          folder: 'expenses'
+        });
+        invoiceUrl = result.secure_url;
+      } catch (cloudinaryError) {
+        console.error('Cloudinary Unsigned upload failed:', cloudinaryError.message);
+      }
+    }
 
     const newExpense = await Expense.create({
       userId: userId ? userId.trim() : null,
