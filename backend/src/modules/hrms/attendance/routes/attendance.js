@@ -7,9 +7,9 @@ const { Op } = require('sequelize');
 const { getAddressFromCoords } = require('../../../../core/utils/geocoder');
 
 const LEGACY_ALIASES = {
-  'emp0128': 'HMPL39',
-  'mandeep': 'HMPL39',
-  'mandeep singh': 'HMPL39'
+  'emp0128': 'EMP39',
+  'mandeep': 'EMP39',
+  'mandeep singh': 'EMP39'
 };
 
 const getAuthoritativeISTDate = (d = new Date()) => {

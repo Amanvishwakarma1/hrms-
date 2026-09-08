@@ -14,7 +14,7 @@ const getEmpId = (emp, idx) => {
     if (emp?.empCode) return emp.empCode;
     if (emp?.employeeId) return emp.employeeId;
     if (emp?.id && !String(emp.id).startsWith('EMP0')) return emp.id;
-    const prefix = emp?.department === 'Company' || !emp?.department ? 'HMPL' : 'ACSPL';
+    const prefix = emp?.department === 'Company' || !emp?.department ? 'EMP' : 'ACSPL';
     return `${prefix}${String((idx || 0) + 1).padStart(2, '0')}`;
 };
 

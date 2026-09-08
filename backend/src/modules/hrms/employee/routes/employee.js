@@ -343,7 +343,7 @@ router.post('/', requireRole(['ADMIN']), async (req, res) => {
       phoneNo,
       joiningDate,
       jobTitle,
-      legalEntity: legalEntity || 'Hydromaterials Private Limited',
+      legalEntity: legalEntity || 'Hrmss Private Limited',
       department,
       location,
       reportingManager,

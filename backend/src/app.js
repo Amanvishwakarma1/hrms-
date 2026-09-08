@@ -220,8 +220,8 @@ const registerRoutes = (prefix) => {
 registerRoutes('/api');
 registerRoutes('/api/v1');
 
-app.get('/', (req, res) => res.json({ status: 'ONLINE', message: 'Hydro HRMS REST API is running successfully!', database: 'Neon Cloud PostgreSQL' }));
-app.get('/api', (req, res) => res.json({ status: 'ONLINE', message: 'Hydro HRMS REST API is running successfully!', database: 'Neon Cloud PostgreSQL' }));
+app.get('/', (req, res) => res.json({ status: 'ONLINE', message: 'HRMS HRMS REST API is running successfully!', database: 'Neon Cloud PostgreSQL' }));
+app.get('/api', (req, res) => res.json({ status: 'ONLINE', message: 'HRMS HRMS REST API is running successfully!', database: 'Neon Cloud PostgreSQL' }));
 
 // Global CORS Error Handler to ensure error responses always return CORS headers
 app.use((err, req, res, next) => {

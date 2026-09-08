@@ -545,14 +545,14 @@ REQUESTED_SCHEMA:
                     "pan": "ADVPT8973B"
                 },
                 "consumer_details": {
-                    "name": "HYDROMATERIALS PRIVATE LIMITED",
+                    "name": "HRMSS PRIVATE LIMITED",
                     "gstin": "03AAECH3185L1ZI",
                     "address": "Kharasa No-26, Punjab",
                     "phone": "9988776655",
                     "state": "Punjab"
                 },
                 "consignee_details": {
-                    "name": "HYDROMATERIALS PRIVATE LIMITED",
+                    "name": "HRMSS PRIVATE LIMITED",
                     "address": "Kharasa No-26, Punjab",
                     "gstin": "03AAECH3185L1ZI",
                     "state": "Punjab"
@@ -808,7 +808,7 @@ REQUESTED_SCHEMA:
             "email": "info@sukhmaterials.com",
             "website": "www.sukhmaterials.com",
             
-            "company_name": "HYDROMATERIALS PRIVATE LIMITED",
+            "company_name": "HRMSS PRIVATE LIMITED",
             
             "bank_name": "State Bank of India",
             "branch": "Lohian Khas",

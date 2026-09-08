@@ -58,7 +58,7 @@ export default function Dashboard() {
                         <i className="fa-solid fa-bolt" style={{ color: '#ffffff', fontSize: '18px' }}></i>
                     </div>
                     <div>
-                        <span className="platform-title" style={{ fontSize: '20px', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.4px', lineHeight: 1.1 }}>Hydro Hub</span>
+                        <span className="platform-title" style={{ fontSize: '20px', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.4px', lineHeight: 1.1 }}>HRMS Hub</span>
                         <span style={{ display: 'block', fontSize: '11px', fontWeight: 600, color: 'var(--text-muted)', marginTop: '2px' }}>Platform Workspace</span>
                     </div>
                 </div>
@@ -299,7 +299,7 @@ export default function Dashboard() {
                                 </div>
                                 <div>
                                     <h3 style={{ margin: 0, fontSize: '20px', fontWeight: 800, color: '#111827', letterSpacing: '-0.4px' }}>Privacy & Data Protection Policy</h3>
-                                    <span style={{ fontSize: '12px', color: '#6b7280', fontWeight: 600 }}>Hydro Platform Enterprise Data & Employee Privacy Disclosure</span>
+                                    <span style={{ fontSize: '12px', color: '#6b7280', fontWeight: 600 }}>HRMS Platform Enterprise Data & Employee Privacy Disclosure</span>
                                 </div>
                             </div>
                             <button 
@@ -333,7 +333,7 @@ export default function Dashboard() {
                                     Data Controller & Scope of Employer Authority
                                 </h4>
                                 <p style={{ margin: '0 0 10px 0', fontSize: '13.5px', color: '#4b5563', lineHeight: '1.6' }}>
-                                    This Privacy & Data Protection Policy governs the collection, processing, transmission, and storage of employee telemetric and operational data by the Employer ("Data Controller") within the Hydro HRMS Enterprise System.
+                                    This Privacy & Data Protection Policy governs the collection, processing, transmission, and storage of employee telemetric and operational data by the Employer ("Data Controller") within the HRMS HRMS Enterprise System.
                                 </p>
                                 <ul style={{ margin: 0, paddingLeft: '20px', fontSize: '13.5px', color: '#4b5563', lineHeight: '1.7' }}>
                                     <li><strong>Lawful Basis for Processing:</strong> Processing is conducted pursuant to the execution of the Employment Contract, compliance with statutory labor regulations, site safety mandates, and legitimate business interests (field logistics, duty verification, and accurate payroll calculation).</li>

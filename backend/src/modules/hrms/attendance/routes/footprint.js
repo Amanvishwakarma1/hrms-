@@ -8,9 +8,9 @@ const { Op } = require('sequelize');
 const RouteReplayService = require('../services/RouteReplayService');
 
 const LEGACY_ALIASES = {
-  'emp0128': 'HMPL39',
-  'mandeep': 'HMPL39',
-  'mandeep singh': 'HMPL39'
+  'emp0128': 'EMP39',
+  'mandeep': 'EMP39',
+  'mandeep singh': 'EMP39'
 };
 
 // High-speed in-memory cache for employee last known locations (<0.001ms lookup)

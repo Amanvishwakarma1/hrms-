@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const backupService = require('../../../core/services/backupService');
 
-const ADMIN_DELETE_PASSWORD = process.env.DB_DELETE_PASSWORD || 'admin@hydro123';
+const ADMIN_DELETE_PASSWORD = process.env.DB_DELETE_PASSWORD || 'admin@hrms123';
 
 // 1. Create a fresh manual backup
 router.post('/backup', (req, res) => {
@@ -53,7 +53,7 @@ router.post('/delete', (req, res) => {
         });
     }
 
-    if (password !== ADMIN_DELETE_PASSWORD && password !== 'admin@hydro123' && password !== 'admin123') {
+    if (password !== ADMIN_DELETE_PASSWORD && password !== 'admin@hrms123' && password !== 'admin123') {
         return res.status(403).json({ 
             success: false, 
             error: 'ACCESS DENIED: Invalid Security Password. Database deletion attempt blocked and logged.' 

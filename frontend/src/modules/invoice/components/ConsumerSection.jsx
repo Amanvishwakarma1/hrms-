@@ -23,7 +23,7 @@ function ConsumerSection({ data, onChange }) {
               className="form-input"
               value={data.name || ""}
               onChange={(e) => handleChange("name", e.target.value)}
-              placeholder="e.g. HydroMaterials Private Limited"
+              placeholder="e.g. HRMSMaterials Private Limited"
             />
           </div>
 

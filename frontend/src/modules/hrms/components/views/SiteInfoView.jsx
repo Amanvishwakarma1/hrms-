@@ -941,8 +941,8 @@ export default function SiteInfoView({ employees }) {
         const empId = String(emp.id || emp.employeeId || '');
         if (['EMP0129', 'EMP0125', 'EMP0130'].includes(empId)) return 'Himachal Pradesh';
         if (['EMP0126', 'EMP0127', 'EMP0128', 'EMP0131', 'EMP0132', 'EMP0133', 'EMP0134', 'EMP0135', 'EMP0136'].includes(empId)) return 'Punjab';
-        if (['EMP0010', 'EMP0022', 'HMPL65'].includes(empId)) return 'Tamil Nadu';
-        if (['EMP0124', 'EMP0018', 'EMP0019', 'hmpl001', 'EMP0021', 'EMP0020'].includes(empId)) return 'Uttar Pradesh';
+        if (['EMP0010', 'EMP0022', 'EMP65'].includes(empId)) return 'Tamil Nadu';
+        if (['EMP0124', 'EMP0018', 'EMP0019', 'EMP001', 'EMP0021', 'EMP0020'].includes(empId)) return 'Uttar Pradesh';
 
         return 'Uttar Pradesh';
     };

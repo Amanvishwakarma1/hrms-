@@ -115,7 +115,7 @@ class PayslipGenerator {
         <!-- Header -->
         <div class="header-bar">
           <div>
-            <div class="company-name">HYDROMATERIALS</div>
+            <div class="company-name">HRMSS</div>
             <div class="company-sub">Registered Corporate Entity | HR & Workforce Operations</div>
           </div>
           <div class="payslip-title-badge">

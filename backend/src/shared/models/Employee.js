@@ -74,7 +74,7 @@ const Employee = sequelize.define('Employee', {
   legalEntity: {
     type: DataTypes.STRING,
     allowNull: true,
-    defaultValue: 'Hydromaterials Private Limited',
+    defaultValue: 'Hrmss Private Limited',
   },
   department: {
     type: DataTypes.STRING,

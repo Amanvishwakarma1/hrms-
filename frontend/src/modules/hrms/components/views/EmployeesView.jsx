@@ -157,7 +157,7 @@ export default function EmployeesView({ employees, onSelectEmployee, refreshEmpl
         'Project Assistant', 'Project Coordinator', 'RO Technician', 'Sr Manager HR', 'Technology Intern'
     ]);
     
-    const [legalEntity, setLegalEntity] = useState('Hydromaterials Private Limited');
+    const [legalEntity, setLegalEntity] = useState('Hrmss Private Limited');
     
     const [department, setDepartment] = useState('Company');
     const [customDepartment, setCustomDepartment] = useState('');
@@ -399,7 +399,7 @@ export default function EmployeesView({ employees, onSelectEmployee, refreshEmpl
                 setEditBankBranchName(emp.bankBranchName || '');
                 setEditJoiningDate(emp.joiningDate || '');
                 setEditJobTitle(emp.jobTitle || 'Design Engineer');
-                setEditLegalEntity(emp.legalEntity || 'Hydromaterials Private Limited');
+                setEditLegalEntity(emp.legalEntity || 'Hrmss Private Limited');
                 setEditDepartment(emp.department || 'Company');
                 setEditLocation(emp.location || 'Headquarters');
                 setEditReportingManager(emp.reportingManager || '');
@@ -475,7 +475,7 @@ export default function EmployeesView({ employees, onSelectEmployee, refreshEmpl
         setEditBankBranchName(emp.bankBranchName || '');
         setEditJoiningDate(emp.joiningDate || '');
         setEditJobTitle(emp.jobTitle || 'Design Engineer');
-        setEditLegalEntity(emp.legalEntity || 'Hydromaterials Private Limited');
+        setEditLegalEntity(emp.legalEntity || 'Hrmss Private Limited');
         setEditDepartment(emp.department || 'Company');
         setEditLocation(emp.location || 'Headquarters');
         setEditReportingManager(emp.reportingManager || '');
@@ -1025,7 +1025,7 @@ export default function EmployeesView({ employees, onSelectEmployee, refreshEmpl
             setAllowedLeaves(0);
             setJoiningDate('');
             setJobTitle('Design Engineer');
-            setLegalEntity('Hydromaterials Private Limited');
+            setLegalEntity('Hrmss Private Limited');
             setDepartment('Company');
             setLocation('Headquarters');
             setReportingManager('');
@@ -2470,7 +2470,7 @@ export default function EmployeesView({ employees, onSelectEmployee, refreshEmpl
                                                 </div>
                                                 <div style={{ background: 'var(--input-bg)', border: '1px solid var(--border-glass)', padding: '8px 12px', borderRadius: '6px' }}>
                                                     <span style={{ display: 'block', color: 'var(--text-muted)', fontWeight: 700, fontSize: '0.68rem', letterSpacing: '0.04em', marginBottom: '2px' }}>LEGAL ENTITY</span>
-                                                    <div style={{ color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.84rem' }}>{viewingEmployee.legalEntity || 'Hydromaterials Private Limited'}</div>
+                                                    <div style={{ color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.84rem' }}>{viewingEmployee.legalEntity || 'Hrmss Private Limited'}</div>
                                                 </div>
                                                 <div style={{ background: 'var(--input-bg)', border: '1px solid var(--border-glass)', padding: '8px 12px', borderRadius: '6px' }}>
                                                     <span style={{ display: 'block', color: 'var(--text-muted)', fontWeight: 700, fontSize: '0.68rem', letterSpacing: '0.04em', marginBottom: '2px' }}>REPORTING MANAGER</span>

@@ -302,7 +302,7 @@ const formatExtractionPayload = (raw) => {
       phone: ext?.vendor_details?.phone || ""
     },
     consumer_details: {
-      name: ext?.consumer_details?.name || ext?.buyer_name || "Hydromaterials Private Limited",
+      name: ext?.consumer_details?.name || ext?.buyer_name || "Hrmss Private Limited",
       gstin: ext?.consumer_details?.gstin || ext?.buyer_gstin || "",
       address: ext?.consumer_details?.address || ""
     },

@@ -67,7 +67,7 @@ const sampleExtraction = {
     po_number: "PO-99214"
   },
   vendor_details: {
-    name: "Hydromaterials Private Limited",
+    name: "Hrmss Private Limited",
     gstin: "07AAAAA0000A1Z5",
     pan: "AAAAA0000A",
     address: "Plot 42, Industrial Area, Sector 62, Noida, Uttar Pradesh 201301",
@@ -115,7 +115,7 @@ const sampleExtraction = {
 const renderSampleInvoiceSVG = (doc) => {
   const invNo = doc?.final_extraction?.invoice_details?.invoice_number || doc?.extracted_data?.invoice_details?.invoice_number || "INV/2026/0892";
   const invDate = doc?.final_extraction?.invoice_details?.invoice_date || doc?.extracted_data?.invoice_details?.invoice_date || "2026-08-15";
-  const vendorName = doc?.final_extraction?.vendor_details?.name || doc?.extracted_data?.vendor_details?.name || "Hydromaterials Private Limited";
+  const vendorName = doc?.final_extraction?.vendor_details?.name || doc?.extracted_data?.vendor_details?.name || "Hrmss Private Limited";
   const customerName = doc?.final_extraction?.consumer_details?.name || doc?.extracted_data?.consumer_details?.name || "Apex Construction Technologies";
   const grandTotal = doc?.final_extraction?.tax_summary?.grand_total || doc?.extracted_data?.tax_summary?.grand_total || 53100;
 
@@ -194,11 +194,11 @@ const renderSampleInvoiceSVG = (doc) => {
       <rect x="0" y="0" width="340" height="85" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
       <text x="16" y="26" font-size="11" font-weight="bold" fill="#166534">✓ AI OCR VALIDATION PASSED</text>
       <text x="16" y="46" font-size="11" fill="#475569">Confidence Score: 98.4% | Rule Set: Standard GST</text>
-      <text x="16" y="66" font-size="11" fill="#475569">Processed via Hydromaterials Cloud OCR Engine</text>
+      <text x="16" y="66" font-size="11" fill="#475569">Processed via Hrmss Cloud OCR Engine</text>
     </g>
 
     <g transform="translate(500, 580)">
-      <text x="250" y="0" font-size="12" font-weight="bold" fill="#334155" text-anchor="end">For Hydromaterials Private Limited</text>
+      <text x="250" y="0" font-size="12" font-weight="bold" fill="#334155" text-anchor="end">For Hrmss Private Limited</text>
       <path d="M120,-30 C150,-50 180,-10 200,-35 C220,-60 240,-20 250,-40" fill="none" stroke="#4f46e5" stroke-width="2"/>
       <text x="250" y="40" font-size="11" fill="#64748b" text-anchor="end">Authorized Signatory</text>
     </g>

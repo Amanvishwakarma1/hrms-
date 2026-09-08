@@ -1,8 +1,8 @@
 const { Sequelize } = require('sequelize');
 
 const dbs = [
-  'C:/Users/Falcon/Desktop/hydro-copy/Hydro/storage/database.sqlite',
-  'C:/Users/Falcon/Desktop/hydro-copy/Hydro/backend/storage/database.sqlite'
+  'C:/Users/Falcon/Desktop/hrms-copy/HRMS/storage/database.sqlite',
+  'C:/Users/Falcon/Desktop/hrms-copy/HRMS/backend/storage/database.sqlite'
 ];
 
 (async () => {

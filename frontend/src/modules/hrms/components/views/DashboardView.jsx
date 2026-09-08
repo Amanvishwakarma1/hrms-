@@ -63,7 +63,7 @@ export default function DashboardView({ totalEmployees, onViewChange }) {
                 await api.sendDirectNotification(
                     rawId,
                     `🎂 Happy Birthday, ${item.name}! 🎉`,
-                    `Warmest birthday wishes from Management & Team Hydro! Wishing you a joyous day and a fantastic year ahead! 🥳🎈`,
+                    `Warmest birthday wishes from Management & Team HRMS! Wishing you a joyous day and a fantastic year ahead! 🥳🎈`,
                     { type: 'BIRTHDAY_WISH', sender: 'ADMIN' }
                 ).catch(err => console.warn('Direct push notice error:', err));
             }

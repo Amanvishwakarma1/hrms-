@@ -65,7 +65,7 @@ router.post('/login', loginRateLimiter, async (req, res) => {
     const userRole = String(user.role || '').toUpperCase();
     if (userRole === 'EMPLOYEE' && !isMobileAppRequest) {
       return res.status(403).json({ 
-        error: 'Mobile app accounts (EMPLOYEE) are not permitted to log in to the web management dashboard. Please use the Hydro Mobile Application.' 
+        error: 'Mobile app accounts (EMPLOYEE) are not permitted to log in to the web management dashboard. Please use the HRMS Mobile Application.' 
       });
     }
 
