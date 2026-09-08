@@ -245,13 +245,69 @@ const handleInvoiceExpressFallback = async (req, res) => {
     return res.status(200).send(renderSampleInvoiceSVG(foundDoc));
   }
 
-  if (fullUrl.includes('/templates')) {
-    return res.status(200).json([defaultTemplate]);
+const { extractInvoiceData } = require('../../../shared/services/runpodNodeService');
+const jwt = require('jsonwebtoken');
+
+const demoUploadHistory = [];
+
+const checkDemoAccountUploadLimit = (req) => {
+  let userRole = req.user?.role;
+  let userId = req.user?.id || req.user?.empCode;
+  let userEmail = req.user?.email;
+
+  if (!userRole || !userId) {
+    const authHeader = req.headers['authorization'] || req.headers['Authorization'] || req.headers['x-access-token'];
+    if (authHeader) {
+      const token = String(authHeader).replace('Bearer ', '').trim();
+      try {
+        const decoded = jwt.decode(token);
+        if (decoded) {
+          userRole = decoded.role || userRole;
+          userId = decoded.id || decoded.empCode || userId;
+          userEmail = decoded.email || userEmail;
+        }
+      } catch (e) {}
+    }
   }
 
-const { extractInvoiceData } = require('../../../shared/services/runpodNodeService');
+  const roleStr = String(userRole || '').toUpperCase();
+  const idStr = String(userId || '').toUpperCase();
+  const emailStr = String(userEmail || '').toLowerCase();
+
+  const isDemo = roleStr === 'DEMO' || idStr === 'DEMO01' || idStr === 'DEMO' || emailStr === 'demo@hydromaterial.com';
+
+  if (!isDemo) {
+    return { allowed: true };
+  }
+
+  const now = Date.now();
+  const TWENTY_FOUR_HOURS = 24 * 60 * 60 * 1000;
+
+  while (demoUploadHistory.length > 0 && (now - demoUploadHistory[0]) > TWENTY_FOUR_HOURS) {
+    demoUploadHistory.shift();
+  }
+
+  if (demoUploadHistory.length >= 3) {
+    return {
+      allowed: false,
+      message: "Demo Limit Reached: Demo accounts are allowed a maximum of 3 invoice uploads per 24 hours. Please log in using an Admin account for unlimited uploads."
+    };
+  }
+
+  demoUploadHistory.push(now);
+  return { allowed: true };
+};
 
   if (fullUrl.includes('/upload')) {
+    const limitCheck = checkDemoAccountUploadLimit(req);
+    if (!limitCheck.allowed) {
+      return res.status(429).json({
+        success: false,
+        error: limitCheck.message,
+        limitReached: true
+      });
+    }
+
     const uploadedFiles = req.files || (req.file ? [req.file] : []);
     const uploadedFile = uploadedFiles.length > 0 ? uploadedFiles[0] : null;
     const fileName = uploadedFile && uploadedFile.originalname ? uploadedFile.originalname : "Uploaded_Invoice.pdf";

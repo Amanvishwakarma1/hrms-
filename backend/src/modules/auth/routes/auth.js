@@ -15,12 +15,23 @@ router.post('/login', loginRateLimiter, async (req, res) => {
       return res.status(400).json({ error: 'Email and password are required.' });
     }
 
-    const cleanEmail = String(email).trim().toLowerCase();
-    const user = await Employee.findOne({ where: { email: cleanEmail } });
+    const { Op } = require('sequelize');
+    const cleanInput = String(email).trim().toLowerCase();
+    const upperInput = String(email).trim().toUpperCase();
+
+    const user = await Employee.findOne({
+      where: {
+        [Op.or]: [
+          { email: cleanInput },
+          { id: upperInput },
+          { empCode: upperInput }
+        ]
+      }
+    });
 
     if (!user) {
       if (req.recordFailedAttempt) req.recordFailedAttempt();
-      return res.status(401).json({ error: 'Invalid email or password.' });
+      return res.status(401).json({ error: 'Invalid user ID/email or password.' });
     }
 
     const isMatch = await comparePassword(password, user.password);

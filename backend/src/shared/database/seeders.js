@@ -2,40 +2,46 @@ const runSeeders = async (sequelize) => {
   // Seed initial employees
   try {
     const Employee = require('../models/Employee');
-    const empCount = await Employee.count();
-    if (empCount === 0) {
-      await Employee.bulkCreate([
-        {
-          id: 'HMPL01',
-          empCode: 'HMPL01',
-          name: 'System Admin',
-          email: 'admin@hydromaterial.com',
-          password: 'password123',
-          role: 'ADMIN',
-          designation: 'OFFICE',
-          gender: 'Male',
-          department: 'Management',
-          jobTitle: 'Director',
-          joiningDate: '2022-01-01',
-          status: 'ACTIVE'
-        },
-        {
-          id: 'HMPL02',
-          empCode: 'HMPL02',
-          name: 'Aman Material',
-          email: 'amanhydromaterial@gmail.com',
-          password: 'password123',
-          role: 'EMPLOYEE',
-          designation: 'FIELD',
-          gender: 'Female',
-          department: 'Engineering',
-          jobTitle: 'Engineer IT',
-          joiningDate: '2026-07-07',
-          status: 'ACTIVE'
-        }
-      ]);
-      console.log('Seeded initial default employees successfully.');
-    }
+    
+    // Seed Admin Account
+    await Employee.findOrCreate({
+      where: { id: 'HMPL01' },
+      defaults: {
+        id: 'HMPL01',
+        empCode: 'HMPL01',
+        name: 'System Admin',
+        email: 'admin@hydromaterial.com',
+        password: 'password123',
+        role: 'ADMIN',
+        designation: 'OFFICE',
+        gender: 'Male',
+        department: 'Management',
+        jobTitle: 'Director',
+        joiningDate: '2022-01-01',
+        status: 'ACTIVE'
+      }
+    });
+
+    // Seed Demo Account (Restricted to 3 invoice uploads per 24 hours)
+    await Employee.findOrCreate({
+      where: { id: 'DEMO01' },
+      defaults: {
+        id: 'DEMO01',
+        empCode: 'DEMO01',
+        name: 'Demo Account',
+        email: 'demo@hydromaterial.com',
+        password: 'demopassword123',
+        role: 'DEMO',
+        designation: 'OFFICE',
+        gender: 'Male',
+        department: 'Sales',
+        jobTitle: 'Demo Account',
+        joiningDate: '2026-01-01',
+        status: 'ACTIVE'
+      }
+    });
+
+    console.log('Seeded Admin (HMPL01) and Demo (DEMO01) accounts successfully.');
   } catch (seedErr) {
     console.error('Failed to seed initial employees:', seedErr);
   }

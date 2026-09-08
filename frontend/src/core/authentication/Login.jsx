@@ -56,10 +56,10 @@ export default function Login() {
                 </div>
                 <form className="login-form" onSubmit={handleSubmit} autoComplete="off">
                     <div className="input-group">
-                        <span className="input-icon">✉️</span>
+                        <span className="input-icon">👤</span>
                         <input 
-                            type="email" 
-                            placeholder="Email Address" 
+                            type="text" 
+                            placeholder="Employee ID or Email Address" 
                             required
                             autoComplete="new-password"
                             value={email}
@@ -81,6 +81,20 @@ export default function Login() {
                         {loading ? 'Signing in...' : 'Sign In'}
                     </button>
                     {error && <div className="login-error-text">{error}</div>}
+
+                    <div style={{ marginTop: '20px', paddingTop: '15px', borderTop: '1px solid rgba(255, 255, 255, 0.1)', fontSize: '0.85rem', textAlign: 'left', color: '#94a3b8' }}>
+                        <div style={{ fontWeight: '600', marginBottom: '8px', color: '#e2e8f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <span>🔑 Available Access Accounts</span>
+                        </div>
+                        <div style={{ background: 'rgba(255, 255, 255, 0.05)', padding: '10px 12px', borderRadius: '8px', marginBottom: '8px' }}>
+                            <div style={{ color: '#38bdf8', fontWeight: '600' }}>1. Admin Account (Unlimited)</div>
+                            <div>ID: <code>HMPL01</code> | Pass: <code>password123</code></div>
+                        </div>
+                        <div style={{ background: 'rgba(255, 255, 255, 0.05)', padding: '10px 12px', borderRadius: '8px' }}>
+                            <div style={{ color: '#f59e0b', fontWeight: '600' }}>2. Demo Account (3 Uploads / 24h)</div>
+                            <div>ID: <code>DEMO01</code> | Pass: <code>demopassword123</code></div>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
