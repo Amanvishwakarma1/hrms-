@@ -384,6 +384,28 @@ body.dark-theme .platform-header {
   line-height: 1.1;
 }
 
+/* Platform subtitle: block by default (was inline style — now CSS-controlled) */
+.platform-subtitle {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* User badge info: flex column by default (was inline style — now CSS-controlled) */
+.user-badge-info {
+  display: flex;
+  flex-direction: column;
+}
+
+/* User active status: flex by default (was inline style — now CSS-controlled) */
+.user-active-status {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
 .header-right {
   display: flex;
   align-items: center;
@@ -897,23 +919,22 @@ body.dark-theme .skeleton {
     min-height: 64px;
     height: 64px;
     padding: 0 16px;
-    padding-left: max(16px, env(safe-area-inset-left));
-    padding-right: max(16px, env(safe-area-inset-right));
     flex-wrap: nowrap;
     gap: 0;
+    overflow: hidden;           /* Prevent 2-row wrapping — clip any overflow */
     position: sticky;
     top: 0;
     z-index: 50;
     box-shadow: 0 1px 0 var(--border-subtle), 0 2px 8px rgba(0,0,0,0.06);
   }
   .header-left { gap: 10px; flex-shrink: 0; }
-  .platform-subtitle { display: none !important; }
+  .platform-subtitle { display: none; }   /* No inline style fight — purely CSS-controlled now */
   .platform-title { font-size: 17px !important; letter-spacing: -0.3px !important; line-height: 1 !important; }
   .header-right { gap: 8px; }
   .user-profile-badge { padding: 0; background: transparent; border: none; box-shadow: none; gap: 0; }
   .user-avatar-initial { width: 36px; height: 36px; font-size: 14px; flex-shrink: 0; }
-  .user-badge-info { display: none !important; }
-  .logout-btn { display: none !important; }
+  .user-badge-info { display: none; }     /* No inline style fight — purely CSS-controlled now */
+  .logout-btn { display: none; }
   .theme-toggle-btn {
     width: 40px; height: 40px; min-width: 40px; font-size: 18px;
     display: flex; align-items: center; justify-content: center; padding: 0; border-radius: 10px;

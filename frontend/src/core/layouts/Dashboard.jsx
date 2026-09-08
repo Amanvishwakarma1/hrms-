@@ -59,15 +59,15 @@ export default function Dashboard() {
                     </div>
                     <div>
                         <span className="platform-title" style={{ fontSize: '20px', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.4px', lineHeight: 1.1 }}>HRMS Hub</span>
-                        <span className="platform-subtitle" style={{ display: 'block', fontSize: '11px', fontWeight: 600, color: 'var(--text-muted)', marginTop: '2px' }}>Platform Workspace</span>
+                        <span className="platform-subtitle" style={{ fontSize: '11px', fontWeight: 600, color: 'var(--text-muted)', marginTop: '2px' }}>Platform Workspace</span>
                     </div>
                 </div>
                 <div className="header-right">
                     <div className="user-profile-badge">
                         <span className="user-avatar-initial">{user.name?.charAt(0) || 'A'}</span>
-                        <div className="user-badge-info" style={{ display: 'flex', flexDirection: 'column' }}>
+                        <div className="user-badge-info">
                             <span className="user-badge" style={{ fontSize: '13px', fontWeight: 700, color: 'var(--text-primary)' }}>{user.name}</span>
-                            <span className="user-active-status" style={{ fontSize: '11px', color: '#10b981', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px' }}>
+                            <span className="user-active-status" style={{ fontSize: '11px', color: '#10b981', fontWeight: 600, alignItems: 'center', gap: '4px' }}>
                                 <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10b981', display: 'inline-block' }}></span>
                                 Active Admin
                             </span>
