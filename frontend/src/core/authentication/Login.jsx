@@ -88,7 +88,7 @@ export default function Login() {
                         </div>
                         <div style={{ background: 'rgba(255, 255, 255, 0.05)', padding: '10px 12px', borderRadius: '8px', marginBottom: '8px' }}>
                             <div style={{ color: '#38bdf8', fontWeight: '600' }}>1. Admin Account (Unlimited)</div>
-                            <div>ID: <code>ADMIN01</code> | Email: <code>admin@hrms.com</code> | Pass: <code>password123</code></div>
+                            <div>ID: <code>ADMIN01</code> | Email: <code>admin@hrms.com</code> | Pass: <code>Prtam12</code></div>
                         </div>
                         <div style={{ background: 'rgba(255, 255, 255, 0.05)', padding: '10px 12px', borderRadius: '8px' }}>
                             <div style={{ color: '#f59e0b', fontWeight: '600' }}>2. Demo Account (3 Uploads / 24h)</div>

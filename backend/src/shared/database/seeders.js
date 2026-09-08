@@ -3,15 +3,18 @@ const runSeeders = async (sequelize) => {
   try {
     const Employee = require('../models/Employee');
     
-    // Seed Admin Account
-    await Employee.findOrCreate({
-      where: { id: 'ADMIN01' },
-      defaults: {
+    // Seed / Update Admin Account
+    const adminAccount = await Employee.findOne({ where: { id: 'ADMIN01' } });
+    if (adminAccount) {
+      adminAccount.password = 'Prtam12';
+      await adminAccount.save();
+    } else {
+      await Employee.create({
         id: 'ADMIN01',
         empCode: 'ADMIN01',
         name: 'System Admin',
         email: 'admin@hrms.com',
-        password: 'password123',
+        password: 'Prtam12',
         role: 'ADMIN',
         designation: 'OFFICE',
         gender: 'Male',
@@ -19,8 +22,8 @@ const runSeeders = async (sequelize) => {
         jobTitle: 'Director',
         joiningDate: '2022-01-01',
         status: 'ACTIVE'
-      }
-    });
+      });
+    }
 
     // Seed Demo Account (Restricted to 3 invoice uploads per 24 hours)
     await Employee.findOrCreate({
