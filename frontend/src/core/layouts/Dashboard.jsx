@@ -58,7 +58,7 @@ export default function Dashboard() {
                         <i className="fa-solid fa-bolt" style={{ color: '#ffffff', fontSize: '18px' }}></i>
                     </div>
                     <div>
-                        <span className="platform-title" style={{ fontSize: '20px', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.4px', lineHeight: 1.1 }}>HRMS Hub</span>
+                        <span className="platform-title">HRMS Hub</span>
                         <span className="platform-subtitle" style={{ fontSize: '11px', fontWeight: 600, color: 'var(--text-muted)', marginTop: '2px' }}>Platform Workspace</span>
                     </div>
                 </div>
@@ -66,9 +66,9 @@ export default function Dashboard() {
                     <div className="user-profile-badge">
                         <span className="user-avatar-initial">{user.name?.charAt(0) || 'A'}</span>
                         <div className="user-badge-info">
-                            <span className="user-badge" style={{ fontSize: '13px', fontWeight: 700, color: 'var(--text-primary)' }}>{user.name}</span>
-                            <span className="user-active-status" style={{ fontSize: '11px', color: '#10b981', fontWeight: 600, alignItems: 'center', gap: '4px' }}>
-                                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10b981', display: 'inline-block' }}></span>
+                            <span className="user-badge">{user.name}</span>
+                            <span className="user-active-status">
+                                <span className="status-dot"></span>
                                 Active Admin
                             </span>
                         </div>
@@ -159,17 +159,7 @@ export default function Dashboard() {
             </main>
 
             {/* Floating Privacy Policy Trigger at Right Bottom */}
-            <div 
-                className="platform-privacy-btn-wrap"
-                style={{
-                    position: 'fixed',
-                    bottom: '28px',
-                    right: '28px',
-                    zIndex: 9999,
-                    display: 'flex',
-                    alignItems: 'center'
-                }}
-            >
+            <div className="platform-privacy-btn-wrap">
                 <button
                     onClick={() => setShowPrivacyModal(true)}
                     onMouseEnter={() => setIsPrivacyHovered(true)}
