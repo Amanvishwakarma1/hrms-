@@ -1,6 +1,6 @@
 import os
 
-target_dir = r"C:\Users\Falcon\Desktop\Hydro\frontend\src\modules\invoice"
+target_dir = r"C:\Users\Falcon\Desktop\HRMS\frontend\src\modules\invoice"
 for root, dirs, files in os.walk(target_dir):
     for file in files:
         if file.endswith(('.js', '.jsx')):

@@ -1,6 +1,6 @@
 files = [
-    r"C:\Users\Falcon\Desktop\Hydro\frontend\src\index.css",
-    r"C:\Users\Falcon\Desktop\Hydro\frontend\src\modules\hrms\index.css"
+    r"C:\Users\Falcon\Desktop\HRMS\frontend\src\index.css",
+    r"C:\Users\Falcon\Desktop\HRMS\frontend\src\modules\hrms\index.css"
 ]
 
 for file in files:

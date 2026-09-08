@@ -1,4 +1,4 @@
-# Hydro HRMS Application
+# HRMS HRMS Application
 
 A modern Web-based HRMS Admin Dashboard & Location Tracking Management System.
 
@@ -48,7 +48,7 @@ npm run dev
 ## 📁 Repository Directory Structure
 
 ```
-Hydro/
+HRMS/
 ├── backend/                  # Express Node.js REST API Server
 │   ├── src/
 │   │   ├── app.js            # Express app configuration & middleware registration

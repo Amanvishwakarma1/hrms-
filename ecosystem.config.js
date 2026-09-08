@@ -1,9 +1,9 @@
 module.exports = {
   apps: [
     {
-      name: 'hydro-express-backend',
+      name: 'HRMS-express-backend',
       script: 'src/server.js',
-      cwd: 'C:/Users/Falcon/Desktop/hydro-copy/Hydro/backend',
+      cwd: 'C:/Users/Falcon/Desktop/HRMS-copy/HRMS/backend',
       node_args: '--max-old-space-size=4096',
       restart_delay: 2500,
       kill_timeout: 4000,
@@ -16,15 +16,15 @@ module.exports = {
       }
     },
     {
-      name: 'hydro-invoice-backend',
+      name: 'HRMS-invoice-backend',
       script: 'venv/Scripts/python.exe',
       args: '-m uvicorn app:app --host 0.0.0.0 --port 8080',
-      cwd: 'C:/Users/Falcon/Desktop/hydro-copy/Hydro/backend/src/modules/invoice'
+      cwd: 'C:/Users/Falcon/Desktop/HRMS-copy/HRMS/backend/src/modules/invoice'
     },
     {
-      name: 'hydro-frontend',
+      name: 'HRMS-frontend',
       script: 'node_modules/vite/bin/vite.js',
-      cwd: 'C:/Users/Falcon/Desktop/hydro-copy/Hydro/frontend',
+      cwd: 'C:/Users/Falcon/Desktop/HRMS-copy/HRMS/frontend',
       args: 'preview --host 0.0.0.0 --port 5173'
     }
   ]

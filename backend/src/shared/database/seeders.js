@@ -5,12 +5,12 @@ const runSeeders = async (sequelize) => {
     
     // Seed Admin Account
     await Employee.findOrCreate({
-      where: { id: 'HMPL01' },
+      where: { id: 'ADMIN01' },
       defaults: {
-        id: 'HMPL01',
-        empCode: 'HMPL01',
+        id: 'ADMIN01',
+        empCode: 'ADMIN01',
         name: 'System Admin',
-        email: 'admin@hydromaterial.com',
+        email: 'admin@hrms.com',
         password: 'password123',
         role: 'ADMIN',
         designation: 'OFFICE',
@@ -29,7 +29,7 @@ const runSeeders = async (sequelize) => {
         id: 'DEMO01',
         empCode: 'DEMO01',
         name: 'Demo Account',
-        email: 'demo@hydromaterial.com',
+        email: 'demo@hrms.com',
         password: 'demopassword123',
         role: 'DEMO',
         designation: 'OFFICE',
@@ -41,7 +41,7 @@ const runSeeders = async (sequelize) => {
       }
     });
 
-    console.log('Seeded Admin (HMPL01) and Demo (DEMO01) accounts successfully.');
+    console.log('Seeded Admin (ADMIN01) and Demo (DEMO01) accounts successfully.');
   } catch (seedErr) {
     console.error('Failed to seed initial employees:', seedErr);
   }

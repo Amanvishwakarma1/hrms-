@@ -96,11 +96,11 @@ To run this application at production scale with high speed, zero downtime, and 
 ### 3. Frontend Application (Render Static Site / Vercel / Netlify)
 * **Build Command**: `npm run build`
 * **Publish Directory**: `dist`
-* **Environment Variable**: `VITE_API_URL=https://hydro-backend-api.onrender.com`
+* **Environment Variable**: `VITE_API_URL=https://HRMS-backend-api.onrender.com`
 
 ---
 
 ## 🔒 Security Best Practices
 1. **Never hardcode secrets** (`RUNPOD_API_KEY`, `CLOUDINARY_API_SECRET`) inside static client-side frontend code. Always process AI model calls through the Express backend proxy.
-2. **CORS Configuration**: Restrict backend origins to `https://hydro-hrms-app.onrender.com` and authorized domains.
+2. **CORS Configuration**: Restrict backend origins to `https://HRMS-hrms-app.onrender.com` and authorized domains.
 3. **Database SSL**: Enforce `sslmode=require` on Neon PostgreSQL database connections.

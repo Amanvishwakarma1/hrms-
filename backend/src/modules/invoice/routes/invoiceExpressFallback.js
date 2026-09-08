@@ -274,7 +274,7 @@ const checkDemoAccountUploadLimit = (req) => {
   const idStr = String(userId || '').toUpperCase();
   const emailStr = String(userEmail || '').toLowerCase();
 
-  const isDemo = roleStr === 'DEMO' || idStr === 'DEMO01' || idStr === 'DEMO' || emailStr === 'demo@hydromaterial.com';
+  const isDemo = roleStr === 'DEMO' || idStr === 'DEMO01' || idStr === 'DEMO' || emailStr === 'demo@hrms.com';
 
   if (!isDemo) {
     return { allowed: true };
