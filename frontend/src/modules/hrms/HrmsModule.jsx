@@ -281,10 +281,20 @@ function App() {
             />
             <main className="main-content" style={{ overflow: 'hidden', height: '100vh', display: 'flex', flexDirection: 'column' }}>
                 <header className="top-header glass" style={{ flexShrink: 0, display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'relative', top: 0, zIndex: 100, background: 'var(--panel-bg)', boxShadow: '0 1px 4px rgba(0,0,0,0.03)', margin: '0 0 10px 0', borderRadius: '10px', padding: '6px 14px', minHeight: '46px' }}>
-                    <div className="header-left">
+                    <div className="header-left" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        {/* Hamburger — shown only on mobile via .menu-toggle CSS class */}
+                        <button
+                            className="menu-toggle"
+                            onClick={() => setIsSidebarOpen(true)}
+                            aria-label="Open navigation menu"
+                            title="Open menu"
+                        >
+                            <i className="fa-solid fa-bars" />
+                        </button>
                         <h1 id="current-view-title" style={{ margin: 0, fontSize: '1.15rem', fontWeight: 700, color: 'var(--text-primary)' }}>{getViewTitle()}</h1>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+
                         <button 
                             onClick={toggleTheme}
                             style={{

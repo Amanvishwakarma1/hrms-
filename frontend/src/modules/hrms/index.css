@@ -758,8 +758,9 @@ body.dark-theme .stat-card:hover {
 
 /* Responsive Breakpoint (Tablets and Mobile) */
 @media (max-width: 768px) {
+    /* Keep as row — sidebar is position:fixed, doesn't take flow space */
     #dashboard-screen {
-        flex-direction: column;
+        flex-direction: row;
     }
     
     .sidebar {
@@ -773,21 +774,32 @@ body.dark-theme .stat-card:hover {
         z-index: 1000;
         border-radius: 0;
         transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow-y: auto;
     }
     .sidebar.open {
         left: 0;
     }
     
+    /* Full-width main content since sidebar is off-canvas */
     .main-content {
-        padding: 16px;
+        width: 100%;
+        padding: 8px;
     }
     
     .top-header {
-        padding: 12px 16px;
-        margin-bottom: 16px;
-        gap: 12px;
+        padding: 8px 12px;
+        margin-bottom: 8px;
+        gap: 8px;
+        flex-wrap: nowrap;
+    }
+    .top-header h1 {
+        font-size: 0.95rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     
+    /* Show hamburger menu button on mobile */
     .menu-toggle {
         display: inline-flex;
     }
@@ -797,6 +809,16 @@ body.dark-theme .stat-card:hover {
         gap: 12px;
     }
     
+    /* Tables scroll horizontally */
+    .table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    table {
+        min-width: 600px;
+    }
+
+    /* Stats grid: 2 cols on tablet */
     .stats-grid {
         grid-template-columns: 1fr;
         gap: 16px;
@@ -989,11 +1011,44 @@ img, video, iframe, canvas {
 
 /* Advanced Mobile Overrides Phase 3 & 4 */
 @media (max-width: 768px) {
-    table { display: block; width: 100%; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; }
     input, select, textarea { width: 100% !important; max-width: 100%; }
-    .btn { min-height: 44px; justify-content: center; width: 100%; }
+    /* Buttons: min touch target but NOT forced full-width (breaks header layouts) */
+    .btn { min-height: 44px; }
     .tab-btn-group { flex-wrap: wrap; }
-    .tab-btn { width: 100%; text-align: center; justify-content: center; margin-bottom: 5px; }
+}
+
+/* Small phone: ≤ 480px */
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    .main-content {
+        padding: 6px;
+    }
+    .top-header h1 {
+        font-size: 0.85rem;
+    }
+    .top-header {
+        padding: 6px 10px;
+    }
+    /* Action buttons in header: compact */
+    .header-actions .btn {
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+    /* View headers: smaller */
+    .view-header h2 {
+        font-size: 1rem;
+    }
+    /* Form rows single column */
+    .form-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+    /* Wider sidebar on tiny phones */
+    .sidebar {
+        width: 85vw;
+    }
 }
 
 /* Form Controls & Theme Alignment */

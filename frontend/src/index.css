@@ -867,3 +867,148 @@ body.dark-theme .skeleton {
   background: linear-gradient(90deg, rgba(255, 255, 255, 0.03) 25%, rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0.03) 75%);
   background-size: 200% 100%;
 }
+
+/* ============================================================
+   PLATFORM DASHBOARD — MOBILE RESPONSIVE
+   ============================================================ */
+
+/* Tablet: ≤ 768px */
+@media (max-width: 768px) {
+  /* Login card */
+  .login-card {
+    padding: 32px 24px;
+    max-width: 100%;
+    border-radius: 16px;
+  }
+
+  /* Platform header */
+  .platform-header {
+    margin: 12px 12px 0 12px;
+    padding: 12px 16px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .header-right {
+    gap: 10px;
+  }
+  /* Collapse the user badge text on tablet */
+  .user-badge {
+    display: none;
+  }
+  .user-profile-badge {
+    padding: 4px 8px 4px 4px;
+    gap: 6px;
+  }
+  /* Smaller logout button */
+  .logout-btn {
+    padding: 7px 12px;
+    font-size: 12px;
+  }
+
+  /* Main area */
+  .platform-main {
+    padding: 24px 12px 0 12px;
+  }
+
+  /* Welcome banner */
+  .welcome-heading {
+    font-size: 28px;
+    letter-spacing: -0.5px;
+  }
+  .welcome-sub {
+    font-size: 14px;
+  }
+
+  /* Module cards — single column */
+  .modules-grid {
+    gap: 16px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .module-card {
+    flex: 1 1 100%;
+    min-width: unset;
+    max-width: 100%;
+    min-height: unset;
+    padding: 24px;
+  }
+  .module-card-name {
+    font-size: 20px;
+  }
+  .module-card-description {
+    font-size: 13.5px;
+  }
+}
+
+/* Phone: ≤ 480px */
+@media (max-width: 480px) {
+  .login-page-container {
+    padding: 12px;
+  }
+  .login-card {
+    padding: 24px 16px;
+    border-radius: 12px;
+  }
+  .login-header h2 {
+    font-size: 22px;
+  }
+  .login-header .logo-icon {
+    font-size: 40px;
+  }
+
+  /* Header — stack title below logo on very small screens */
+  .platform-header {
+    margin: 8px 8px 0 8px;
+    padding: 10px 12px;
+  }
+  .platform-title {
+    font-size: 16px !important;
+  }
+  /* Hide logout text on very small screens; keep icon */
+  .logout-btn {
+    padding: 7px 8px;
+    font-size: 0;  /* hide text */
+    width: 34px;
+    height: 34px;
+    justify-content: center;
+  }
+  .logout-btn::before {
+    content: '↩';
+    font-size: 14px;
+  }
+
+  .platform-main {
+    padding: 16px 8px 0 8px;
+  }
+  .banner-small-tag {
+    font-size: 10px;
+    padding: 4px 12px;
+  }
+  .welcome-heading {
+    font-size: 22px;
+    letter-spacing: -0.3px;
+  }
+  .welcome-sub {
+    font-size: 13px;
+  }
+  .module-card {
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
+  .module-card-name {
+    font-size: 18px;
+  }
+  .module-card-description {
+    min-height: unset;
+  }
+  .module-card-icon-wrapper {
+    width: 46px;
+    height: 46px;
+    font-size: 20px;
+    border-radius: 14px;
+  }
+  .module-card-btn {
+    padding: 12px 16px;
+    font-size: 13px;
+  }
+}

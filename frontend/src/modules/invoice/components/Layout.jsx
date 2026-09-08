@@ -10,6 +10,7 @@ export default function Layout() {
   const [isDragActive, setIsDragActive] = useState(false);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(true);
   const [isSidebarHovered, setIsSidebarHovered] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -189,12 +190,52 @@ export default function Layout() {
       onDragLeave={handleDrag}
       onDrop={handleDrop}
     >
+      {/* Mobile backdrop overlay — closes sidebar when tapped */}
+      {isMobileMenuOpen && (
+        <div
+          className="sidebar-overlay-mobile"
+          onClick={() => setIsMobileMenuOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Mobile Top Bar — hidden on desktop via CSS, shown on mobile */}
+      <div className="mobile-top-bar">
+        <button
+          className="mobile-hamburger"
+          onClick={() => setIsMobileMenuOpen(true)}
+          aria-label="Open navigation menu"
+        >
+          <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <svg width="22" height="22" fill="none" viewBox="0 0 24 24">
+            <rect width="24" height="24" rx="6" fill="var(--primary-color)" opacity="0.15"/>
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="var(--primary-color)" strokeWidth="2"/>
+            <polyline points="14 2 14 8 20 8" stroke="var(--primary-color)" strokeWidth="2"/>
+          </svg>
+          <span className="mobile-brand">OCR Portal</span>
+        </div>
+        <button
+          onClick={toggleTheme}
+          className="mobile-theme-btn"
+          title="Toggle theme"
+          aria-label="Toggle color theme"
+        >
+          {theme === 'light' ? '🌙' : '☀️'}
+        </button>
+      </div>
+
       {/* Sidebar */}
       {(() => {
         const isExpanded = !sidebarCollapsed || isSidebarHovered;
         return (
           <aside 
-            className={`sidebar ${sidebarCollapsed ? "collapsed" : ""} ${isSidebarHovered ? "hover-expanded" : ""}`} 
+            className={`sidebar ${sidebarCollapsed ? "collapsed" : ""} ${isSidebarHovered ? "hover-expanded" : ""} ${isMobileMenuOpen ? "mobile-open" : ""}`} 
             onMouseEnter={() => setIsSidebarHovered(true)}
             onMouseLeave={() => setIsSidebarHovered(false)}
             style={{ position: 'relative', overflow: 'visible' }}

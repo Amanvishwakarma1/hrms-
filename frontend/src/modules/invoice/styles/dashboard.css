@@ -2614,3 +2614,298 @@ body {
 /* Dark Theme Gradients */
 html[data-theme='dark'] body.invoice-body, [data-theme='dark'] .dashboard { background-image: radial-gradient(at 0% 0%, rgba(129, 140, 248, 0.16) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.06) 0px, transparent 50%); background-attachment: fixed; background-color: var(--bg-app); }
 
+/* ============================================================
+   INVOICE MODULE — MOBILE RESPONSIVE
+   ============================================================ */
+
+/* Mobile top bar & overlay: hidden on desktop */
+.mobile-top-bar {
+  display: none;
+}
+
+.sidebar-overlay-mobile {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  z-index: 99;
+}
+
+/* === TABLET: ≤ 768px === */
+@media (max-width: 768px) {
+
+  /* ---- Mobile top navigation bar ---- */
+  .mobile-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    background: var(--bg-panel);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    flex-shrink: 0;
+    height: 52px;
+  }
+
+  .mobile-hamburger {
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    border-radius: var(--radius-sm);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .mobile-hamburger:hover {
+    background: var(--bg-hover);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+  }
+
+  .mobile-brand {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.3px;
+  }
+
+  .mobile-theme-btn {
+    background: none;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    transition: var(--transition);
+  }
+  .mobile-theme-btn:hover {
+    background: var(--bg-hover);
+  }
+
+  /* ---- Backdrop overlay ---- */
+  .sidebar-overlay-mobile {
+    display: block;
+  }
+
+  /* ---- App shell: vertical stack on mobile ---- */
+  .app-shell {
+    flex-direction: column;
+    overflow: auto;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  /* ---- Sidebar: off-canvas drawer on mobile ---- */
+  .sidebar {
+    position: fixed !important;
+    top: 0;
+    left: -280px;
+    width: 260px !important;
+    min-width: 260px !important;
+    height: 100vh;
+    z-index: 100;
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: none;
+    overflow-y: auto;
+  }
+
+  .sidebar.mobile-open {
+    left: 0 !important;
+    box-shadow: var(--shadow-lg) !important;
+  }
+
+  /* Collapsed state irrelevant on mobile — always show full sidebar when open */
+  .sidebar.collapsed.mobile-open {
+    width: 260px !important;
+    min-width: 260px !important;
+  }
+  .sidebar.collapsed.mobile-open .nav-item {
+    justify-content: flex-start;
+    padding: 9px 10px;
+    gap: 10px;
+  }
+  .sidebar.collapsed.mobile-open .nav-label {
+    display: flex !important;
+  }
+
+  /* ---- Main content fills full width ---- */
+  body.invoice-body #root {
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow: auto !important;
+  }
+  body.invoice-body {
+    overflow: auto !important;
+    height: auto !important;
+  }
+
+  /* ---- KPI grid: 2 columns on tablet ---- */
+  .kpi-container {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  /* ---- Queue panel: scrollable horizontal strip ---- */
+  .queue-panel {
+    padding: 8px 12px;
+    overflow-x: auto;
+  }
+  .queue-list {
+    gap: 8px;
+  }
+  .queue-item {
+    width: 150px;
+  }
+
+  /* ---- Split view: stack vertically ---- */
+  .split-view {
+    flex-direction: column;
+    overflow: auto;
+    height: auto;
+  }
+
+  .document-preview-block {
+    width: 100% !important;
+    height: 300px;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0;
+  }
+
+  /* ---- Editor panel: full width ---- */
+  .editor-panel {
+    height: auto;
+    min-height: 400px;
+  }
+
+  /* ---- Form inputs: single column ---- */
+  .inputs-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px;
+  }
+  .form-group.full-width {
+    grid-column: span 1 !important;
+  }
+
+  /* ---- Editor row grid: single column ---- */
+  .editor-row-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* ---- Action bar: wrap buttons ---- */
+  .action-bar-wrapper {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px 12px;
+    position: static;
+  }
+
+  /* ---- Archive / Analytics page tables ---- */
+  .table-wrapper {
+    max-height: none;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .items-table {
+    min-width: 600px;
+  }
+
+  /* ---- Top bar (if any page-level top bar) ---- */
+  .top-bar {
+    padding: 8px 12px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .top-bar-left h1 {
+    font-size: 16px;
+  }
+}
+
+/* === PHONE: ≤ 480px === */
+@media (max-width: 480px) {
+
+  /* KPI: still 2-col but tighter */
+  .kpi-container {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 8px;
+    gap: 8px;
+  }
+  .kpi-value {
+    font-size: 16px;
+  }
+  .kpi-title {
+    font-size: 11px;
+  }
+  .kpi-card {
+    padding: 8px 10px;
+  }
+
+  /* Preview panel shorter on phone */
+  .document-preview-block {
+    height: 220px;
+  }
+
+  /* Tabs: scrollable horizontally on phone */
+  .editor-tabs-bar {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    padding: 0 8px;
+  }
+  .tab-btn {
+    padding: 10px 12px;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  /* Buttons: minimum touch target */
+  .btn {
+    min-height: 44px;
+    padding: 10px 14px;
+    font-size: 12px;
+  }
+
+  /* Form inputs: full width */
+  .form-input,
+  .summary-input {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Mobile top bar padding */
+  .mobile-top-bar {
+    padding: 8px 12px;
+  }
+
+  /* Queue items more compact */
+  .queue-item {
+    width: 130px;
+    padding: 5px 10px;
+  }
+
+  /* Action bar buttons: more compact */
+  .action-bar-wrapper .btn {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+
+  /* Sidebar wider on very small screens */
+  .sidebar {
+    width: 82vw !important;
+    min-width: unset !important;
+  }
+}
