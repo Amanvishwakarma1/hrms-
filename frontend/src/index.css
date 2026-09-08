@@ -850,6 +850,7 @@ textarea:focus-visible,
   box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.25) !important;
 }
 
+
 /* Production Skeleton Shimmer Loaders */
 @keyframes skeletonShimmer {
   0% { background-position: -200% 0; }
@@ -869,146 +870,138 @@ body.dark-theme .skeleton {
 }
 
 /* ============================================================
-   PLATFORM DASHBOARD — MOBILE RESPONSIVE
+   PLATFORM DASHBOARD - MOBILE RESPONSIVE DESIGN
+   Breakpoints: 768 / 480 / 390 / 360 / 320px
    ============================================================ */
 
-/* Tablet: ≤ 768px */
+/* ALL MOBILE: max-width 768px */
 @media (max-width: 768px) {
-  /* Login card */
-  .login-card {
-    padding: 32px 24px;
-    max-width: 100%;
-    border-radius: 16px;
+  .login-page-container {
+    padding: 16px;
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+  }
+  .login-card { padding: 32px 24px; max-width: 100%; border-radius: 16px; }
+
+  .platform-dashboard-container {
+    max-height: none;
+    min-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: max(40px, env(safe-area-inset-bottom));
   }
 
-  /* Platform header */
   .platform-header {
-    margin: 12px 12px 0 12px;
-    padding: 12px 16px;
-    flex-wrap: wrap;
-    gap: 10px;
+    margin: 0;
+    border-radius: 0;
+    min-height: 64px;
+    height: 64px;
+    padding: 0 16px;
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+    flex-wrap: nowrap;
+    gap: 0;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    box-shadow: 0 1px 0 var(--border-subtle), 0 2px 8px rgba(0,0,0,0.06);
   }
-  .header-right {
-    gap: 10px;
-  }
-  /* Collapse the user badge text on tablet */
-  .user-badge {
-    display: none;
-  }
-  .user-profile-badge {
-    padding: 4px 8px 4px 4px;
-    gap: 6px;
-  }
-  /* Smaller logout button */
-  .logout-btn {
-    padding: 7px 12px;
-    font-size: 12px;
+  .header-left { gap: 10px; flex-shrink: 0; }
+  .platform-subtitle { display: none !important; }
+  .platform-title { font-size: 17px !important; letter-spacing: -0.3px !important; line-height: 1 !important; }
+  .header-right { gap: 8px; }
+  .user-profile-badge { padding: 0; background: transparent; border: none; box-shadow: none; gap: 0; }
+  .user-avatar-initial { width: 36px; height: 36px; font-size: 14px; flex-shrink: 0; }
+  .user-badge-info { display: none !important; }
+  .logout-btn { display: none !important; }
+  .theme-toggle-btn {
+    width: 40px; height: 40px; min-width: 40px; font-size: 18px;
+    display: flex; align-items: center; justify-content: center; padding: 0; border-radius: 10px;
   }
 
-  /* Main area */
   .platform-main {
-    padding: 24px 12px 0 12px;
+    padding: 28px 16px 0 16px;
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+    max-width: 100% !important;
   }
 
-  /* Welcome banner */
-  .welcome-heading {
-    font-size: 28px;
-    letter-spacing: -0.5px;
-  }
-  .welcome-sub {
-    font-size: 14px;
-  }
+  .banner-small-tag { font-size: 11px; padding: 5px 14px; letter-spacing: 0.7px; }
+  .welcome-heading { font-size: 30px; letter-spacing: -0.5px; line-height: 1.15; margin-top: 12px; }
+  .welcome-sub { font-size: 15px; line-height: 1.55; margin-top: 10px; max-width: 100%; }
 
-  /* Module cards — single column */
-  .modules-grid {
-    gap: 16px;
-    flex-direction: column;
-    align-items: stretch;
-  }
+  .modules-grid { flex-direction: column; align-items: stretch; gap: 16px; margin-top: 28px; padding: 0; width: 100%; }
+
   .module-card {
-    flex: 1 1 100%;
-    min-width: unset;
-    max-width: 100%;
-    min-height: unset;
-    padding: 24px;
+    flex: 1 1 100% !important; min-width: 0 !important; max-width: 100% !important;
+    min-height: 0 !important; height: auto !important; padding: 20px !important;
+    box-sizing: border-box; display: flex; flex-direction: column;
   }
-  .module-card-name {
-    font-size: 20px;
+  .module-card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+  .module-card-icon-wrapper { width: 48px !important; height: 48px !important; font-size: 22px !important; border-radius: 14px !important; flex-shrink: 0; }
+  .module-card-badge {
+    font-size: 10px !important; padding: 4px 8px !important; letter-spacing: 0.3px; font-weight: 700;
+    white-space: normal; height: fit-content; align-self: flex-start; text-align: right;
   }
-  .module-card-description {
-    font-size: 13.5px;
+  .module-card-name { font-size: 22px; letter-spacing: -0.4px; margin-bottom: 8px !important; margin-top: 2px !important; }
+  .module-card-description { font-size: 14px; line-height: 1.5; min-height: 0 !important; margin-bottom: 16px !important; }
+
+  .module-card-features { flex: 0 !important; margin-bottom: 20px !important; gap: 12px !important; width: 100%; }
+  .module-feature-item {
+    display: flex !important; align-items: flex-start !important;
+    font-size: 13.5px !important; font-weight: 600; line-height: 1.45; gap: 10px !important;
   }
+  .module-feature-item i { margin-top: 2px; flex-shrink: 0; font-size: 14px !important; }
+
+  .module-card-btn {
+    width: 100% !important; min-height: 50px !important; height: 50px !important; padding: 0 20px !important;
+    font-size: 15px !important; font-weight: 700; display: flex !important; align-items: center;
+    justify-content: center; gap: 8px; border-radius: 12px !important; margin-top: auto; flex-shrink: 0;
+  }
+  .btn-arrow-icon { font-size: 16px; line-height: 1; }
+
+  .platform-privacy-btn-wrap {
+    bottom: max(16px, env(safe-area-inset-bottom)) !important;
+    right: max(16px, env(safe-area-inset-right)) !important;
+  }
+  .platform-privacy-btn-wrap button { padding: 10px !important; min-width: 48px; min-height: 48px; }
 }
 
-/* Phone: ≤ 480px */
+/* PHONE: max-width 480px */
 @media (max-width: 480px) {
-  .login-page-container {
-    padding: 12px;
-  }
-  .login-card {
-    padding: 24px 16px;
-    border-radius: 12px;
-  }
-  .login-header h2 {
-    font-size: 22px;
-  }
-  .login-header .logo-icon {
-    font-size: 40px;
-  }
+  .login-card { padding: 24px 16px; border-radius: 12px; }
+  .login-header h2 { font-size: 22px; }
+  .platform-main { padding-top: 22px; }
+  .welcome-heading { font-size: 26px; }
+  .welcome-sub { font-size: 14px; }
+  .module-card { padding: 18px !important; }
+  .module-card-name { font-size: 20px; }
+}
 
-  /* Header — stack title below logo on very small screens */
-  .platform-header {
-    margin: 8px 8px 0 8px;
-    padding: 10px 12px;
-  }
-  .platform-title {
-    font-size: 16px !important;
-  }
-  /* Hide logout text on very small screens; keep icon */
-  .logout-btn {
-    padding: 7px 8px;
-    font-size: 0;  /* hide text */
-    width: 34px;
-    height: 34px;
-    justify-content: center;
-  }
-  .logout-btn::before {
-    content: '↩';
-    font-size: 14px;
-  }
+/* PHONE: max-width 390px (iPhone 14, Pixel 7) */
+@media (max-width: 390px) {
+  .platform-header { height: 60px; min-height: 60px; }
+  .user-avatar-initial { width: 34px; height: 34px; font-size: 13px; }
+  .welcome-heading { font-size: 24px; }
+  .module-card-name { font-size: 19px; }
+  .module-card-icon-wrapper { width: 44px !important; height: 44px !important; font-size: 20px !important; }
+}
 
-  .platform-main {
-    padding: 16px 8px 0 8px;
-  }
-  .banner-small-tag {
-    font-size: 10px;
-    padding: 4px 12px;
-  }
-  .welcome-heading {
-    font-size: 22px;
-    letter-spacing: -0.3px;
-  }
-  .welcome-sub {
-    font-size: 13px;
-  }
-  .module-card {
-    padding: 20px 16px;
-    border-radius: 16px;
-  }
-  .module-card-name {
-    font-size: 18px;
-  }
-  .module-card-description {
-    min-height: unset;
-  }
-  .module-card-icon-wrapper {
-    width: 46px;
-    height: 46px;
-    font-size: 20px;
-    border-radius: 14px;
-  }
-  .module-card-btn {
-    padding: 12px 16px;
-    font-size: 13px;
-  }
+/* PHONE: max-width 360px (common Android) */
+@media (max-width: 360px) {
+  .platform-header { padding: 0 12px; }
+  .platform-title { font-size: 16px !important; }
+  .welcome-heading { font-size: 22px; }
+  .module-card { padding: 16px !important; }
+  .module-card-btn { font-size: 14px !important; min-height: 48px !important; height: 48px !important; }
+}
+
+/* PHONE: max-width 320px (iPhone SE 1st gen) */
+@media (max-width: 320px) {
+  .platform-title { font-size: 15px !important; }
+  .welcome-heading { font-size: 20px; }
+  .welcome-sub { font-size: 13px; }
+  .module-card-name { font-size: 18px; }
+  .module-feature-item { font-size: 12.5px !important; }
+  .module-card-btn { font-size: 13px !important; padding: 0 12px !important; }
 }

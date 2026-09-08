@@ -59,15 +59,15 @@ export default function Dashboard() {
                     </div>
                     <div>
                         <span className="platform-title" style={{ fontSize: '20px', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.4px', lineHeight: 1.1 }}>HRMS Hub</span>
-                        <span style={{ display: 'block', fontSize: '11px', fontWeight: 600, color: 'var(--text-muted)', marginTop: '2px' }}>Platform Workspace</span>
+                        <span className="platform-subtitle" style={{ display: 'block', fontSize: '11px', fontWeight: 600, color: 'var(--text-muted)', marginTop: '2px' }}>Platform Workspace</span>
                     </div>
                 </div>
                 <div className="header-right">
                     <div className="user-profile-badge">
                         <span className="user-avatar-initial">{user.name?.charAt(0) || 'A'}</span>
-                        <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        <div className="user-badge-info" style={{ display: 'flex', flexDirection: 'column' }}>
                             <span className="user-badge" style={{ fontSize: '13px', fontWeight: 700, color: 'var(--text-primary)' }}>{user.name}</span>
-                            <span style={{ fontSize: '11px', color: '#10b981', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px' }}>
+                            <span className="user-active-status" style={{ fontSize: '11px', color: '#10b981', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px' }}>
                                 <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10b981', display: 'inline-block' }}></span>
                                 Active Admin
                             </span>
@@ -108,29 +108,29 @@ export default function Dashboard() {
                                 <p className="module-card-description">{mod.description}</p>
                                 
                                 {/* Feature Highlights List */}
-                                <div style={{ width: '100%', marginBottom: '28px', display: 'flex', flexDirection: 'column', gap: '10px', flex: 1 }}>
+                                <div className="module-card-features" style={{ width: '100%', marginBottom: '28px', display: 'flex', flexDirection: 'column', gap: '10px', flex: 1 }}>
                                     {!isInvoice ? (
                                         <>
-                                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '13.5px', fontWeight: 600, color: 'var(--text-secondary)' }}>
-                                                <i className="fa-solid fa-circle-check" style={{ color: '#10b981', fontSize: '15px' }}></i> Real-time GPS & Route Replay Tracking
+                                            <div className="module-feature-item" style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '13.5px', fontWeight: 600, color: 'var(--text-secondary)' }}>
+                                                <i className="fa-solid fa-circle-check" style={{ color: '#10b981', fontSize: '15px', marginTop: '1px', flexShrink: 0 }}></i> Real-time GPS & Route Replay Tracking
                                             </div>
-                                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '13.5px', fontWeight: 600, color: 'var(--text-secondary)' }}>
-                                                <i className="fa-solid fa-circle-check" style={{ color: '#10b981', fontSize: '15px' }}></i> Geofence Site Info & Attendance Analytics
+                                            <div className="module-feature-item" style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '13.5px', fontWeight: 600, color: 'var(--text-secondary)' }}>
+                                                <i className="fa-solid fa-circle-check" style={{ color: '#10b981', fontSize: '15px', marginTop: '1px', flexShrink: 0 }}></i> Geofence Site Info & Attendance Analytics
                                             </div>
-                                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '13.5px', fontWeight: 600, color: 'var(--text-secondary)' }}>
-                                                <i className="fa-solid fa-circle-check" style={{ color: '#10b981', fontSize: '15px' }}></i> Expense Claims & History Management
+                                            <div className="module-feature-item" style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '13.5px', fontWeight: 600, color: 'var(--text-secondary)' }}>
+                                                <i className="fa-solid fa-circle-check" style={{ color: '#10b981', fontSize: '15px', marginTop: '1px', flexShrink: 0 }}></i> Expense Claims & History Management
                                             </div>
                                         </>
                                     ) : (
                                         <>
-                                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '13.5px', fontWeight: 600, color: 'var(--text-secondary)' }}>
-                                                <i className="fa-solid fa-circle-check" style={{ color: '#10b981', fontSize: '15px' }}></i> Automated OCR Invoice Parsing
+                                            <div className="module-feature-item" style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '13.5px', fontWeight: 600, color: 'var(--text-secondary)' }}>
+                                                <i className="fa-solid fa-circle-check" style={{ color: '#10b981', fontSize: '15px', marginTop: '1px', flexShrink: 0 }}></i> Automated OCR Invoice Parsing
                                             </div>
-                                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '13.5px', fontWeight: 600, color: 'var(--text-secondary)' }}>
-                                                <i className="fa-solid fa-circle-check" style={{ color: '#10b981', fontSize: '15px' }}></i> Document Validation & Analytics Archival
+                                            <div className="module-feature-item" style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '13.5px', fontWeight: 600, color: 'var(--text-secondary)' }}>
+                                                <i className="fa-solid fa-circle-check" style={{ color: '#10b981', fontSize: '15px', marginTop: '1px', flexShrink: 0 }}></i> Document Validation & Analytics Archival
                                             </div>
-                                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '13.5px', fontWeight: 600, color: 'var(--text-secondary)' }}>
-                                                <i className="fa-solid fa-circle-check" style={{ color: '#10b981', fontSize: '15px' }}></i> Multi-format Export & Tax Breakdown Reporting
+                                            <div className="module-feature-item" style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '13.5px', fontWeight: 600, color: 'var(--text-secondary)' }}>
+                                                <i className="fa-solid fa-circle-check" style={{ color: '#10b981', fontSize: '15px', marginTop: '1px', flexShrink: 0 }}></i> Multi-format Export & Tax Breakdown Reporting
                                             </div>
                                         </>
                                     )}
@@ -160,6 +160,7 @@ export default function Dashboard() {
 
             {/* Floating Privacy Policy Trigger at Right Bottom */}
             <div 
+                className="platform-privacy-btn-wrap"
                 style={{
                     position: 'fixed',
                     bottom: '28px',
